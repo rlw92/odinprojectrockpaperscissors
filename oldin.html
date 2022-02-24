@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock! Paper! Scissors!</title>
+</head>
+<style>
+    h1 {text-align:center;}
+</style>
+<body>
+    <div><h1>Rock, Paper, Scissors</h1></div>
+<div><p>This is the second iteration of this project andd is played on the page. </p></div>
+
+<div class="intro">YOU MUST FACE ME IN A GAME OF ROCK PAPER SCISSORS</div>
+
+<div class="choose">CHOOSE YOUR WEAPON!</div>
+
+<div class="cs">COMPUTER SCORE:</div>
+<div class ="ps">PLAYER SCORE:</div>
+
+<div class="buttons">
+    <div class="rock"><button>ROCK</button></div>
+    <div class="paper"><button>PAPER</button></div>
+    <div class="scissors"><button>SCISSORS</button></div>
+</div>
+
+
+</body>
+<script>
+
+    //write the array for the 3 choices that the computer can pick
+    
+    let choices = ["rock","paper","scissors"];
+    let rbtn = document.querySelector('.rock');
+    let rchoice = rbtn.addEventListener("click", playRound)
+    
+    /* the code for the function needs to be placed inside it to randomly generate every time.
+    let random = Math.floor(Math.random() * choices.length);
+    let choice = choices[random];
+    */
+    
+    function computerPlays(){let random = Math.floor(Math.random() * choices.length);
+    let choice = choices[random];
+    return choice;}
+
+    
+    
+    function playerPlays(){
+        return "rock";
+
+
+ 
+        /*
+     let x = prompt("Rock,paper,scissors");
+    let choice = x.toLowerCase();
+    return choice;
+    */
+  
+
+    } 
+  
+    
+    let ps = 0;
+    let cs =  0;
+    let draws = 0;
+    document.querySelector(".ps").textContent = "PLAYER SCORE: " + ps;
+    document.querySelector(".cs").textContent = "COMPUTER SCORE: " + cs;
+
+    function playRound(x){
+     
+     let player = x;
+    //let player = playerPlays();
+    let computer = computerPlays();
+
+    
+
+    if (player === computer) {alert("draw"); draws++} 
+    else if (player==="rock" && computer === "scissors"){alert("rock beats scissors you win"); ps++} 
+    else if (player==="rock" && computer === "paper"){alert("paper beats rock you lose"); cs++}
+    else if (player==="paper" && computer === "scissors"){alert("scissors beats paper you lose"); cs++} 
+    else if (player==="paper" && computer === "rock"){alert("paper beats rock you win"); ps++}
+    else if (player==="scissors" && computer === "rock"){alert("rock beats scissors you lose"); cs++} 
+    else if (player==="scissors" && computer === "paper"){alert("scissors beats paper you win"); ps++}
+      
+    document.querySelector(".ps").textContent = "PLAYER SCORE: " + ps;
+    document.querySelector(".cs").textContent = "COMPUTER SCORE: " + cs;
+    
+
+    console.log("Computer chose " + computer);
+    console.log("Player chose " + player );
+    console.log("The scores are computer: " + cs);
+    console.log("Draws:" + draws);
+    console.log("Player: " + ps);
+    }
+    
+    /* Removing this at the moment to build the interface
+    function game(){
+    for (i=0;i<5; i++){
+    playRound();}
+    if(i===5 && cs>ps){alert("unlucky you lost!");} 
+    else if(i===5 && cs<ps){alert("You won!");}
+    else if(i===5 && cs===ps){alert("DRAW")}
+    
+    }
+    */
+    
+    
+    </script>
+</html>
